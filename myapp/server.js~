@@ -1,0 +1,26 @@
+'use strict';
+
+var express = require('express'),
+    exphbs  = require('express-handlebars'); // "express-handlebars"
+
+var app = express();
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+app.get('/', function (req, res) {
+    res.render('home', {title:"My Site"});
+});
+app.get('/town', function (req, res) {
+    res.render('town', { town: "Lee Vining",title:"hello guys"});
+});
+app.get('/june', function (req, res) {
+    res.render('june', {title:"hellys"});
+});
+app.get('/bodie', function (req, res) {
+    res.render('bodie');
+});
+app.listen(3000, function () {
+    console.log('express-handlebars example server listening on: 3000');
+});
+module.exports = app;
